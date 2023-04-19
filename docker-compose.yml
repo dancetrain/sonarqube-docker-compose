@@ -2,9 +2,7 @@ version: '3'
 services:
   sonarqube-postgres:
     container_name: sonarqube-postgres
-    image: postgres:13.6
-    ports:
-      - "5432:5432"
+    image: postgres:15
     environment:
       - POSTGRES_USER=sonarqube
       - POSTGRES_PASSWORD=sonarqube
@@ -12,7 +10,8 @@ services:
 
   sonarqube:
     container_name: sonarqube
-    image: sonarqube:9.4-community
+    image: sonarqube:lts-community
+    pull_policy: always
     ports:
       -  "9000:9000"
     environment:
